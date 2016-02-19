@@ -1,4 +1,4 @@
-Protokół przesyłu między pacjentem, lekarzami i rejestracją
+Protokół przesyłu między pacjentami, lekarzami i rejestracją
 =======
 1. Dozwolone zdania w poszczególnych rozmowach:
     - Pacjent -> Rejestracja:

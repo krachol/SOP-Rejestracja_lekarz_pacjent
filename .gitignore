@@ -3,6 +3,10 @@ Patient
 Doctor
 Registration
 
+!Patient/
+!Doctor/
+!Registration/
+
 # YCM's compiled extra conf
 .ycm_extra_conf.pyc
 

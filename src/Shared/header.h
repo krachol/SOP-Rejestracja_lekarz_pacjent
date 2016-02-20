@@ -10,6 +10,7 @@
 #include <sys/ipc.h>
 #include <sys/msg.h>
 
+#include "messages.h"
 
 void printResult(double input, double output); 
 

@@ -23,4 +23,3 @@ void registeActualVisit() {
 void registerVacation() {
     return;
 }
-

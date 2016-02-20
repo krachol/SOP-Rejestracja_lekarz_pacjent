@@ -5,13 +5,10 @@
 int main (int argc, char *argv[])
 {
     int server_message_queue_id = -1;
-    while (!connect(&server_message_queue_id)) {
-        printf("Haven't been able to connect. Trying again in 1 second\n");
-        sleep(1);
-    }
-
-    while (runInterface());
-
+    
+    connect(&server_message_queue_id);
+    
+    runInterface();
 
     return 0;
 }

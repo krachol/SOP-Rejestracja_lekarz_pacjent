@@ -5,12 +5,15 @@
 
 void login();
 void logout();
+void registerUser();
+
 void registerVisit();
 void sendDoctorListForCurrentDay();
 void sendAvailableVisitsForCurrentDay();
 void sendVisitStatus();
 void cancelVisit();
 void sendInfoAboutLoginTries();
+
 void registeActualVisit();
 void registerVacation();
 

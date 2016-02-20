@@ -1,12 +1,9 @@
 #ifndef PATIENT_H_J0NSD3QQ
 #define PATIENT_H_J0NSD3QQ
 
-#include "header.h"
+#include "client.h"
 
-int connect(int* id);
 int runInterface();
-void disconnect(int* id);
-
 
 void login();
 void logout();

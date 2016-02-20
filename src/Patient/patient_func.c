@@ -1,14 +1,5 @@
 #include "patient.h" 
 
-//Establish connection
-int connect(int* id) { 
-    *id = msgget(0xCAFEBABE, 0700);
-
-    if (*id == -1)
-        return 0; 
-
-    return 1;
-}
 
 //running console interface
 int runInterface() {

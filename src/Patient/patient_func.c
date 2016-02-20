@@ -1,7 +1,7 @@
 #include "patient.h" 
 
-int connect(int* id) 
-{ 
+//Establish connection
+int connect(int* id) { 
     *id = msgget(0xCAFEBABE, 0700);
 
     if (*id == -1)
@@ -10,15 +10,13 @@ int connect(int* id)
     return 1;
 }
 
+//running console interface
 int runInterface() {
-    return 1;
+    return 0;
 }
 
-void disconnect(int* id){
-    msgctl(*id, IPC_RMID, NULL);
-    return;
-}
-
+/* Communication functions */
+/* Patient -> Registration */
 void login() {
     return;
 }

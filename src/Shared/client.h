@@ -6,8 +6,10 @@
 
 //Establish connection
 int connect(int * id);
-int generalLogin (int server_id, int sender, char* login, char* password);
+int generalLogin (int server_id, int sender, int ID, char* login, char* password);
 
 
+void sendMessage(int server_id, Message message);
+Message receiveMessage(int server_id, long type);
 
 #endif /* end of include guard: CLIENT_H_5KYS27RS */

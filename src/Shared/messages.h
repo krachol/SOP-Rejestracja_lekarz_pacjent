@@ -13,10 +13,19 @@ typedef struct msgbuf {
 } BaseMessage;
 
 /* MESSAGES */
+typedef struct _connect_info_message{
+    long type;
+    int number;
+} ConnectInfoMessage;
+
+typedef struct _connect_message{
+    long type;
+} ConnectMessage;
 
 typedef struct _login_message{
     long type;
     int sender;
+    int ID;
     char login[LOGIN_SIZE];
     char password[PASSWORD_SIZE];
 } LoginMessage;
@@ -32,6 +41,9 @@ typedef union _message {
     BaseMessage base_message;
     LoginMessage login_message;
     LogoutMessage logout_message;
+    ConnectMessage connect_message;
+    ConnectInfoMessage connect_info_message;
 } Message;
+
 
 #endif /* end of include guard: MESSAGES_H_8YZU3XLV */

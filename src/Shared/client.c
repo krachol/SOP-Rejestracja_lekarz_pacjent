@@ -9,17 +9,44 @@ int connect(int* id) {
         sleep(1);
     }
 
-    return 1;
+
+    int clientnumber;
+   
+    Message message;
+    message.connect_message.type = CONNECT_CLIENT_TO_REG_MSG;
+    sendMessage(*id, message);
+    
+    message = receiveMessage(*id, CONNECT_INFO_REG_TO_CLIENT_MSG);
+    clientnumber = message.connect_info_message.number;
+    
+    return clientnumber;
 }
 
-
-int generalLogin (int server_id, int sender, char* login, char* password) {
+Message receiveMessage(int server_id, long type) {
     Message message;
+   int rVal = msgrcv (
+            server_id, 
+            &message.base_message, 
+            sizeof(message.base_message) - sizeof(long), 
+            type,
+            IPC_NOWAIT
+        );
 
-    message.login_message.type = LOGIN_CLIENT_TO_REG_MSG;
-    message.login_message.sender = sender;
-    sprintf(message.login_message.login, "%s", login);
-    sprintf(message.login_message.password, "%s", password);
+    if ( rVal == -1) {
+        printf("Waiting for message\n");
+        msgrcv (
+                server_id, 
+                (void*)(&message.base_message), 
+                sizeof(message.base_message) - sizeof(long), 
+                type,
+                0
+               );
+    }
+
+    return message;
+}
+
+void sendMessage(int server_id, Message message) {
 
    int rVal = msgsnd (
             server_id, 
@@ -38,5 +65,18 @@ int generalLogin (int server_id, int sender, char* login, char* password) {
                );
     }
 
+    return;
+}
+
+int generalLogin (int server_id, int sender, int ID, char* login, char* password) {
+    Message message;
+
+    message.login_message.type = LOGIN_CLIENT_TO_REG_MSG;
+    message.login_message.sender = sender;
+    message.login_message.ID = ID;
+    sprintf(message.login_message.login, "%s", login);
+    sprintf(message.login_message.password, "%s", password);
+
+    sendMessage(server_id, message);
     return 1;
 }

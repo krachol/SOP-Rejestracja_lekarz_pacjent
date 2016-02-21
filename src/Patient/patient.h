@@ -3,9 +3,9 @@
 
 #include "client.h"
 
-int runInterface(int server_id);
+int runInterface(int server_id, int ID);
 
-void login(int server_id);
+void login(int server_id, int myID);
 void logout();
 void registerVisit();
 void getDoctorListForCurrentDay();

@@ -3,6 +3,8 @@
 
 #include "header.h"
 
+void registrationSendMessage(int server_id, Message message);
+
 void login();
 void logout();
 void registerUser();

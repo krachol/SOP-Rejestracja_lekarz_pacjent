@@ -2,6 +2,8 @@ Protokół przesyłu między pacjentami, lekarzami i rejestracją
 =======
 1. Dozwolone zdania w poszczególnych rozmowach:
     - Pacjent -> Rejestracja:
+        * połącz
+        * rozłącz
         * zaloguj
         * wyloguj
         * zarejestruj nowego pacjenta
@@ -13,6 +15,8 @@ Protokół przesyłu między pacjentami, lekarzami i rejestracją
         * odwołaj wizytę
         * prośba o informacje o nieudanych próbach logowania
     - Rejestracja -> Pacjent:
+        * połącz
+        * rozłącz
         * (nie) zalogowałem
         * wylogowałam
         * (nie) zarejestrowałam wizyty
@@ -23,12 +27,16 @@ Protokół przesyłu między pacjentami, lekarzami i rejestracją
         * (nie) odwołałem wizytę
         * informacja o ilości nieudanych prób logowania
     - Lekarz -> Rejestracja:
+        * połącz
+        * rozłącz
         * zaloguj
         * zarejestruj nowego lekarza
         * przyjąłem pacjenta
         * biorę urlop
         * wyloguj
     - Rejestracja -> Lekarz:
+        * połącz
+        * rozłącz
         * (nie) zalogowałam
         * (nie) zarejestrowałam nowego lekarza
         * zarejestrowałam przyjęcie

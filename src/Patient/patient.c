@@ -8,7 +8,7 @@ int main (int argc, char *argv[])
     
     connect(&server_message_queue_id);
     
-    runInterface();
+    runInterface(server_message_queue_id);
 
     return 0;
 }

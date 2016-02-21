@@ -1,6 +1,12 @@
 #ifndef MESSAGE_TYPES_H_SHK74CN3
 #define MESSAGE_TYPES_H_SHK74CN3
 
+/* Senders */
+#define DOCTOR 0
+#define PATIENT 1
+#define REGISTRATION 2
+
+/* Message types */
 #define LOGIN_CLIENT_TO_REG_MSG 2
 #define LOGOUT_CLIENT_TO_REG_MSG 3
 #define REGISTER_CLIENT_TO_REG_MSG 1

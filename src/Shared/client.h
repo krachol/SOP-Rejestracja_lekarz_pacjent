@@ -3,8 +3,10 @@
 
 #include "header.h"
 
+
 //Establish connection
 int connect(int * id);
+int generalLogin (int server_id, int sender, char* login, char* password);
 
 
 

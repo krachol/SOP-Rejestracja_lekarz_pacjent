@@ -2,13 +2,22 @@
 
 
 //running console interface
-int runInterface() {
+int runInterface(int server_id) {
+    login(server_id);
+
     return 0;
 }
 
 /* Communication functions */
 /* Patient -> Registration */
-void login() {
+void login(int server_id) {
+    char login[LOGIN_SIZE];
+    char password[PASSWORD_SIZE];
+    scanf("%s", login);
+    scanf("%s", password);
+
+    generalLogin(server_id, PATIENT, login, password);
+
     return;
 }
 

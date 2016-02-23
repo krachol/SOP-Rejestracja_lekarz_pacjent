@@ -1,5 +1,6 @@
 #include "patient.h"
 
+
 int main (int argc, char *argv[])
 {
     int server_message_queue_id = -1;
@@ -11,5 +12,5 @@ int main (int argc, char *argv[])
     runInterface(server_message_queue_id, myID);
 
 
-    return 0
+    return 0;
 }

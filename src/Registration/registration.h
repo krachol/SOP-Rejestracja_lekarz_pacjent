@@ -4,20 +4,21 @@
 #include "header.h"
 
 void registrationSendMessage(int server_id, Message message);
+void checkConnectionRequests(int input_msg_ipc_id, int* clientCounter);
 
-void login();
-void logout();
-void registerUser();
+void login(int server_id);
+void logout(int server_id);
+void registerUser(int server_id);
 
-void registerVisit();
-void sendDoctorListForCurrentDay();
-void sendAvailableVisitsForCurrentDay();
-void sendVisitStatus();
-void cancelVisit();
-void sendInfoAboutLoginTries();
+void registerVisit(int server_id);
+void sendDoctorListForCurrentDay(int server_id);
+void sendAvailableVisitsForCurrentDay(int server_id);
+void sendVisitStatus(int server_id);
+void cancelVisit(int server_id);
+void sendInfoAboutLoginTries(int server_id);
 
-void registeActualVisit();
-void registerVacation();
+void registeActualVisit(int server_id);
+void registerVacation(int server_id);
 
 
 #endif /* end of include guard: REGISTRATION_H_WL6HU8XK */

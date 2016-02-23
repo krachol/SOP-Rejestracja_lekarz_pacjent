@@ -1,5 +1,25 @@
 #include "registration.h"
 
+void checkConnectionRequests(int input_msg_ipc_id, int* clientCounter) {
+    Message message;
+    int rVal = -1;
+    rVal = msgrcv (
+            input_msg_ipc_id,
+            (void*)(&message.base_message),
+            sizeof(message.base_message) - sizeof(long), 
+            CONNECT_CLIENT_TO_REG_MSG,
+            IPC_NOWAIT
+            );
+    if (rVal != -1) {
+        message.connect_info_message.type = CONNECT_INFO_REG_TO_CLIENT_MSG;
+        message.connect_info_message.number = *clientCounter;
+        registrationSendMessage(input_msg_ipc_id, message); 
+        (*clientCounter)++;
+    }
+
+    return ;
+}
+
 /* Communication functions */
 void registrationSendMessage(int server_id, Message message) {
     int rVal = msgsnd (
@@ -26,6 +46,25 @@ void registrationSendMessage(int server_id, Message message) {
 /* Registration -> * */
 
 void login(int server_id) {
+    Message message;
+
+    int rVal = -1;
+
+    rVal = msgrcv (
+            server_id,
+            (void*)(&message.base_message),
+            sizeof(message.base_message) - sizeof(long), 
+            LOGIN_CLIENT_TO_REG_MSG,
+            IPC_NOWAIT
+            );
+    if (rVal != -1) {
+        printf("%d\n%d\n%s\n%s\n",
+                message.login_message.ID,
+                message.login_message.sender,
+                message.login_message.login,
+                message.login_message.password
+              );
+    }
 
     return;
 }

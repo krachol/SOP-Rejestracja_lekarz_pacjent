@@ -3,14 +3,16 @@
 
 //running console interface
 int runInterface(int server_id, int ID) {
-    login(server_id, ID);
+    if (login(server_id, ID)) {
+        printf("You're logged in");
+    }
 
     return 0;
 }
 
 /* Communication functions */
 /* Patient -> Registration */
-void login(int server_id, int myID) {
+int login(int server_id, int myID) {
     char login[LOGIN_SIZE];
     char password[PASSWORD_SIZE];
     scanf("%s", login);
@@ -18,33 +20,33 @@ void login(int server_id, int myID) {
 
     generalLogin(server_id, PATIENT, myID, login, password);
 
+    return 1;
+}
+
+void logout(int server_id, int myID) {
     return;
 }
 
-void logout() {
+void registerVisit(int server_id, int myID) {
     return;
 }
 
-void registerVisit() {
+void getDoctorListForCurrentDay(int server_id, int myID) {
     return;
 }
 
-void getDoctorListForCurrentDay() {
+void getAvailableVisitsForCurrentDay(int server_id, int myID) {
     return;
 }
 
-void getAvailableVisitsForCurrentDay() {
+void getVisitStatus(int server_id, int myID) {
     return;
 }
 
-void getVisitStatus() {
+void cancelVisit(int server_id, int myID) {
     return;
 }
 
-void cancelVisit() {
-    return;
-}
-
-void getFailedLoginsNumber() {
+void getFailedLoginsNumber(int server_id, int myID) {
     return;
 }

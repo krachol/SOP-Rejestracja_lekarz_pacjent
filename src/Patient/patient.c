@@ -1,4 +1,3 @@
-//A simple program that calculates square root of number
 #include "patient.h"
 
 int main (int argc, char *argv[])
@@ -12,5 +11,5 @@ int main (int argc, char *argv[])
     runInterface(server_message_queue_id, myID);
 
 
-    return 0;
+    return 0
 }

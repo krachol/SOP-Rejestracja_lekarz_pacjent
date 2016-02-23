@@ -25,48 +25,49 @@ void registrationSendMessage(int server_id, Message message) {
 }
 /* Registration -> * */
 
-void login() {
+void login(int server_id) {
+
     return;
 }
 
-void logout() {
+void logout(int server_id) {
     return;
 }
 
-void registerUser() {
+void registerUser(int server_id) {
     return;
 }
 
 /* Registration -> Patient */
-void registerVisit() {
+void registerVisit(int server_id) {
     return;
 }
 
-void sendDoctorListForCurrentDay() {
+void sendDoctorListForCurrentDay(int server_id) {
     return;
 }
 
-void sendAvailableVisitsForCurrentDay() {
+void sendAvailableVisitsForCurrentDay(int server_id) {
     return;
 }
 
-void sendVisitStatus() {
+void sendVisitStatus(int server_id) {
     return;
 }
 
-void cancelVisit() {
+void cancelVisit(int server_id) {
     return;
 }
 
-void sendInfoAboutLoginTries() {
+void sendInfoAboutLoginTries(int server_id) {
     return;
 }
 
 /* Registration -> Doctor */
-void registekActualVisit() {
+void registekActualVisit(int server_id) {
     return;
 }
 
-void registerVacation() {
+void registerVacation(int server_id) {
     return;
 }

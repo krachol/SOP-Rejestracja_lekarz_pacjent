@@ -14,7 +14,7 @@ void addLoggedInUser(char* login, int clientID) {
     newElement->next = NULL;
 
     if (pointer == NULL) {
-        pointer = newElement;
+        firstElementInList = newElement;
     } else {
         while (pointer->next != NULL)
             pointer = pointer->next;
@@ -45,7 +45,7 @@ LoggedInListElement* findByID(int clientID) {
     LoggedInListElement *pointer = firstElementInList;
 
     while ((pointer != NULL) &&
-            (clientID == pointer->clientID)) {
+            (clientID != pointer->clientID)) {
         pointer = pointer->next;
     }
     if (pointer != NULL) {

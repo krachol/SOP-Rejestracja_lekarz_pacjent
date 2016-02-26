@@ -79,32 +79,34 @@ void login(int server_id) {
             );
     if (rVal != -1) {
 
-        int ID = message.login_message.ID;
+        Message response;
 
-        if ((findByID(message.login_message.ID) != NULL) &&
-                (findByLogin(message.login_message.login) != NULL)) {
+        switch (message.login_message.sender) {
+            case PATIENT:
+                response.login_info_message.type = LOGIN_INFO_REG_TO_PAT_MSG;
+                break;
+            case DOCTOR:
+                response.login_info_message.type = LOGIN_INFO_REG_TO_DOC_MSG;
+                break;
+        }
+
+        if ((findByID(message.login_message.ID) == NULL) &&
+                (findByLogin(message.login_message.login) == NULL)) {
+
             addLoggedInUser(
                     message.login_message.login,
                     message.login_message.ID
                     );
 
-            printf("%d\n%d\n%s\n%s\n",
-                    message.login_message.ID,
-                    message.login_message.sender,
-                    message.login_message.login,
-                    message.login_message.password
-                  );
-
-            Message message;
-            message.login_info_message.type = LOGIN_INFO_REG_TO_PAT_MSG;
-            message.login_info_message.status = OK;
-            registrationSendMessage(server_id, ID, message);
+            response.login_info_message.status = OK;
         } else {
-            Message message;
-            message.login_info_message.type = LOGIN_INFO_REG_TO_PAT_MSG;
-            message.login_info_message.status = NOT_OK;
-            registrationSendMessage(server_id, ID, message);
+            response.login_info_message.status = NOT_OK;
         }
+        registrationSendMessage ( 
+                server_id, 
+                message.login_message.ID, 
+                response
+                );
     }
     
     return;

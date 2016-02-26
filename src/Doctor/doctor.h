@@ -3,13 +3,13 @@
 
 #include "client.h"
 
-void runInterface();
+void runInterface(int server_id, int ID);
 
-void login();
-void logut();
-void registerUser();
+int login(int server_id, int ID);
+int logut(int server_id, int ID);
+int registerUser(int server_id, int ID);
 
-void registeActualVisit();
-void registerVacation();
+int registeActualVisit(int server_id, int ID);
+int registerVacation(int server_id, int ID);
 
 #endif /* end of include guard: DOCTOR_H_2UXHCEZE */

@@ -70,8 +70,17 @@ void sendMessage(int server_id, Message message) {
     return;
 }
 
-int generalLogin (int server_id, int sender, int ID, char* login, char* password) {
+int generalLogin (int server_id, int sender, int ID) {
     Message message;
+
+    char login[LOGIN_SIZE];
+    char password[PASSWORD_SIZE];
+
+    printf("Input login\n");
+    scanf("%s", login);
+
+    printf("Input password\n");
+    scanf("%s", password);
 
     message.login_message.type = LOGIN_CLIENT_TO_REG_MSG;
     message.login_message.sender = sender;
@@ -80,5 +89,23 @@ int generalLogin (int server_id, int sender, int ID, char* login, char* password
     sprintf(message.login_message.password, "%s", password);
 
     sendMessage(server_id, message);
+
+    int messageType = ID << 6;
+    switch (sender) {
+        case DOCTOR:
+            messageType = messageType | LOGIN_INFO_REG_TO_DOC_MSG;
+            break;
+        case PATIENT:
+            messageType = messageType | LOGIN_INFO_REG_TO_PAT_MSG;
+            break;
+        default:
+            return 0;
+    }
+    
+    message = receiveMessage(server_id, messageType);
+
+    if (message.login_info_message.status)
+        return 0;
+
     return 1;
 }

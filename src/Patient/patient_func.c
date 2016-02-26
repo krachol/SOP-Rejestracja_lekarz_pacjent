@@ -4,7 +4,7 @@
 //running console interface
 int runInterface(int server_id, int ID) {
     while (1){
-        printf("Co chcesz robić?\n1.Logowanie\n2.Rejestracja\n");
+        printf("Co chcesz robić?\n1.Logowanie\n2.Wyjście\n");
         int input;
         scanf("%d", &input);
         switch (input) {
@@ -31,32 +31,12 @@ int runInterface(int server_id, int ID) {
 /* Communication functions */
 /* Patient -> Registration */
 int login(int server_id, int myID) {
-    Message message;
-    char login[LOGIN_SIZE];
-    char password[PASSWORD_SIZE];
-
-        printf("Input login\n");
-        scanf("%s", login);
-
-        printf("Input password\n");
-        scanf("%s", password);
-
-        generalLogin(server_id, PATIENT, myID, login, password);
-
-        int messageType = myID << 6;
-        messageType = messageType | LOGIN_INFO_REG_TO_PAT_MSG;
-
-        printf("%d\n", messageType);
-        message = receiveMessage(server_id, messageType);
-
-    if (message.login_info_message.status)
-        return 0;
-
-    return 1;
+    return generalLogin(server_id, PATIENT, myID);
 }
 
 
 void logout(int server_id, int myID) {
+
     return;
 }
 

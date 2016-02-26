@@ -1,6 +1,9 @@
 #ifndef MESSAGE_TYPES_H_SHK74CN3
 #define MESSAGE_TYPES_H_SHK74CN3
 
+#define OK 0
+#define NOT_OK 1
+
 /* Senders */
 #define DOCTOR 0
 #define PATIENT 1

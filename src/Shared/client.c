@@ -24,13 +24,15 @@ int connect(int* id) {
 
 Message receiveMessage(int server_id, long type) {
     Message message;
-   int rVal = msgrcv (
+
+    int rVal = msgrcv (
             server_id, 
             &message.base_message, 
             sizeof(message.base_message) - sizeof(long), 
             type,
             IPC_NOWAIT
-        );
+            );
+
 
     if ( rVal == -1) {
         printf("Waiting for message\n");

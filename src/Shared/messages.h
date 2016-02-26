@@ -9,10 +9,18 @@
 
 typedef struct msgbuf {
     long type;
+    long clientIS;
+    
     char message[MESSAGE_SIZE];
 } BaseMessage;
 
 /* MESSAGES */
+
+typedef struct _login_info_message {
+    long type;
+    int status;
+} LoginInfoMessage;
+
 typedef struct _connect_info_message{
     long type;
     int number;
@@ -43,6 +51,7 @@ typedef union _message {
     LogoutMessage logout_message;
     ConnectMessage connect_message;
     ConnectInfoMessage connect_info_message;
+    LoginInfoMessage login_info_message;
 } Message;
 
 

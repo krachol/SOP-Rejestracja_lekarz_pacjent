@@ -3,7 +3,7 @@
 int main ()
 {
     int input_msg_ipc_id = -1;
-    input_msg_ipc_id = msgget(0xCAFEBABE, 0700 | IPC_CREAT);
+    input_msg_ipc_id = msgget(0xCAFEBABE, 0700 | IPC_CREAT );
     if (input_msg_ipc_id == -1) {
         return 1;
     }

@@ -2,9 +2,10 @@
 #define REGISTRATION_H_WL6HU8XK
 
 #include "header.h"
+#include "lista.h"
 
-void registrationSendMessage(int server_id, Message message);
-void checkConnectionRequests(int input_msg_ipc_id, int* clientCounter);
+void registrationSendMessage(int server_id, int clientID, Message message);
+void checkConnectionRequests(int server_id, int* clientCounter);
 
 void login(int server_id);
 void logout(int server_id);

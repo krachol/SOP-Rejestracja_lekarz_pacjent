@@ -5,6 +5,7 @@
 #include "lista.h"
 
 void registrationSendMessage(int server_id, int clientID, Message message);
+int registrationReceiveMessage(int server_id, int type, Message* message);
 void checkConnectionRequests(int server_id, int* clientCounter);
 
 void login(int server_id);

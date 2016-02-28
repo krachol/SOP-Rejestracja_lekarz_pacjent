@@ -7,6 +7,7 @@
 //Establish connection
 int connect(int * id);
 int generalLogin (int server_id, int sender, int ID);
+int generalLogout (int server_id, int ID);
 
 
 void sendMessage(int server_id, Message message);

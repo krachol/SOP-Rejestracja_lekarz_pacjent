@@ -3,13 +3,12 @@
 void checkConnectionRequests(int server_id, int* clientCounter) {
     Message message;
     int rVal = -1;
+
     /* odbierz wiadomość o połączeniu od klienta */
-    rVal = msgrcv (
+    rVal = registrationReceiveMessage (
             server_id,
-            (void*)(&message.base_message),
-            sizeof(message.base_message) - sizeof(long), 
             CONNECT_CLIENT_TO_REG_MSG,
-            IPC_NOWAIT
+            &message
             );
     /* przydziel mu numer i wyślij w wiadomości zwrotnej */
     if (rVal != -1) {
@@ -40,14 +39,27 @@ void checkConnectionRequests(int server_id, int* clientCounter) {
 }
 
 /* Communication functions */
-void registrationSendMessage(int server_id, int clientID, Message message) {
-    message.base_message.type = ((clientID << 6) | message.base_message.type);
-    int rVal = msgsnd (
-            server_id, 
-            &message.base_message, 
-            sizeof(message.base_message) - sizeof(long), 
+int registrationReceiveMessage(int server_id, int type, Message* message){
+    
+    int rVal = msgrcv (
+            server_id,
+            (void*)(&(message->base_message)),
+            sizeof(message->base_message) - sizeof(long), 
+            type,
             IPC_NOWAIT
             );
+    return rVal;
+}
+void registrationSendMessage(int server_id, int clientID, Message message) {
+    message.base_message.type = ((clientID << 6) | message.base_message.type);
+
+    int rVal = msgsnd (
+                    server_id, 
+                    (void*)(&message.base_message), 
+                    sizeof(message.base_message) - sizeof(long), 
+                    IPC_NOWAIT
+                   );
+
     if (fork() == 0) {
         if ( rVal == -1) {
             printf("Waiting for space in message queue\n");
@@ -68,14 +80,10 @@ void registrationSendMessage(int server_id, int clientID, Message message) {
 void login(int server_id) {
     Message message;
 
-    int rVal = -1;
-
-    rVal = msgrcv (
-            server_id,
-            (void*)(&message.base_message),
-            sizeof(message.base_message) - sizeof(long), 
+    int rVal = registrationReceiveMessage (
+            server_id, 
             LOGIN_CLIENT_TO_REG_MSG,
-            IPC_NOWAIT
+            &message
             );
     if (rVal != -1) {
 
@@ -108,11 +116,23 @@ void login(int server_id) {
                 response
                 );
     }
-    
+
     return;
 }
 
 void logout(int server_id) {
+    Message message;
+    int rVal = registrationReceiveMessage (
+            server_id,
+            LOGOUT_CLIENT_TO_REG_MSG,
+            &message
+            );
+    if (rVal != -1) {
+        printf(" GOT logut message - GOOD\n");
+        deleteByClientID(message.logout_message.ID);
+        if (findByID(message.logout_message.ID) != NULL)
+            printf("FOUND - BAD\n");
+    }
     return;
 }
 

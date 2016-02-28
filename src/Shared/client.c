@@ -1,6 +1,5 @@
 #include "client.h"
 
-
 //Establish connection
 int connect(int* id) { 
 
@@ -107,5 +106,15 @@ int generalLogin (int server_id, int sender, int ID) {
     if (message.login_info_message.status)
         return 0;
 
+    return 1;
+}
+
+int generalLogout (int server_id, int ID){
+    Message message;
+
+    message.logout_message.type = LOGOUT_CLIENT_TO_REG_MSG;
+    message.logout_message.ID = ID;
+    sendMessage(server_id, message);
+    
     return 1;
 }

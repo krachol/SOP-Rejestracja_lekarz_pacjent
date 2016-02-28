@@ -7,6 +7,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "messages.h"
+
+
 typedef struct _logged_in_list_element {
     char login[LOGIN_SIZE];
     int clientID;

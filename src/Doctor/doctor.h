@@ -6,7 +6,7 @@
 void runInterface(int server_id, int ID);
 
 int login(int server_id, int ID);
-int logut(int server_id, int ID);
+int logout(int server_id, int ID);
 int registerUser(int server_id, int ID);
 
 int registeActualVisit(int server_id, int ID);
